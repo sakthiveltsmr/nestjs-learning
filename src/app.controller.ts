@@ -14,8 +14,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  findAll(): string {
+    return this.appService.findAll();
   }
   @Get(`:id`)
   findOne(@Param('id') id: string) {
