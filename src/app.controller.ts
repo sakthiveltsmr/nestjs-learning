@@ -1,7 +1,15 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('sakthi')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -11,14 +19,18 @@ export class AppController {
   }
   @Get(`:id`)
   findOne(@Param('id') id: string) {
-    return 'retun the single user' + id;
+    return this.appService.findOne(id);
   }
   @Post()
   create(@Body() body: any) {
-    return body;
+    return this.appService.create(body);
   }
   @Put(':id')
   update(@Param('id') id: string, @Body() Body: any) {
-    return 'your data is updated';
+    return this.appService.update(id, Body);
+  }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.appService.remove(id);
   }
 }
