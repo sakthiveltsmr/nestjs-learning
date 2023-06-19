@@ -14,7 +14,7 @@ export class AppService {
     return { id, body };
   }
 
-  findAll() {
+  findAll(): string {
     return 'return all the data';
   }
 
