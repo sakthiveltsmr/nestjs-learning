@@ -4,6 +4,15 @@ import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
+  User = [
+    {
+      id: 1,
+      name: 'sakthivel',
+      age: 25,
+    },
+    { id: 2, name: 'thirumalai', age: 24 },
+    { id: 3, name: 'sadeeshwaran', age: 25 },
+  ];
   create(createUserDto: CreateUserDto) {
     return 'This action adds a new user' + createUserDto;
   }
