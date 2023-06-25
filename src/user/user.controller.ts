@@ -37,9 +37,9 @@ export class UserController {
   ) {
     const customer = this.userService.findOne(+id);
     if (customer) {
-      res.send(customer);
+      res.status(200).send(customer);
     } else {
-      res.status(404).send({ message: 'customer not found!' });
+      res.status(400).send({ message: 'customer not found!' });
     }
   }
 
