@@ -6,10 +6,14 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
+  Req,
+  Res,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Request, Response } from 'express';
 
 @Controller('user')
 export class UserController {
@@ -26,8 +30,17 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+  findOne(
+    @Param('id', ParseIntPipe) id: string,
+    @Req() req: Request,
+    @Res() res: Response,
+  ) {
+    const customer = this.userService.findOne(+id);
+    if (customer) {
+      res.send(customer);
+    } else {
+      res.status(404).send({ message: 'customer not found!' });
+    }
   }
 
   @Patch(':id')
