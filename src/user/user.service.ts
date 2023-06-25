@@ -18,11 +18,11 @@ export class UserService {
   }
 
   findAll() {
-    return `This action returns all user`;
+    return this.User;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} user`;
+    return this.User.find((item) => item.id === id);
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
