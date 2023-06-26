@@ -14,7 +14,7 @@ export class UserService {
     { id: 3, name: 'sadeeshwaran', age: 25 },
   ];
   create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user' + createUserDto;
+    return this.User.push(createUserDto);
   }
 
   findAll() {
