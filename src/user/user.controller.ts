@@ -13,7 +13,7 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { Request, Response, response } from 'express';
+import { Request, Response } from 'express';
 
 @Controller('user')
 export class UserController {
@@ -24,6 +24,8 @@ export class UserController {
     const result = this.userService.create(createUserDto);
     if (result) {
       res.status(201).send('user created successfully');
+    } else {
+      res.status(400).send({ message: 'customer not found!' });
     }
   }
 
