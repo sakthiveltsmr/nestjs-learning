@@ -1,4 +1,11 @@
-import { IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsNotEmptyObject,
+  IsNumber,
+  IsString,
+} from 'class-validator';
+import { createAddressDto } from './create-address.dto';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -13,4 +20,6 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsNumber()
   age: number;
+  @IsNotEmptyObject()
+  address: createAddressDto;
 }
