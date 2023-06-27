@@ -4,8 +4,10 @@ import {
   IsNotEmptyObject,
   IsNumber,
   IsString,
+  ValidateNested,
 } from 'class-validator';
-import { createAddressDto } from './create-address.dto';
+import { CreateAddressDto } from './create-address.dto';
+import { Type } from 'class-transformer';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -21,5 +23,7 @@ export class CreateUserDto {
   @IsNumber()
   age: number;
   @IsNotEmptyObject()
-  address: createAddressDto;
+  @ValidateNested()
+  @Type(() => CreateAddressDto)
+  address: CreateAddressDto;
 }
