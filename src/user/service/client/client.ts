@@ -26,4 +26,8 @@ export class Client {
   getAllClient() {
     return this.user.map((user) => plainToClass(SerializedUser, user));
   }
+
+  getUserTypeUsername(username: 'string') {
+    return this.user.filter((Client) => Client.username === username);
+  }
 }
