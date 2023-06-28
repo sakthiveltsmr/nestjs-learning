@@ -1,8 +1,12 @@
-import { Controller, Injectable } from '@nestjs/common';
+import { Controller, Get, Inject } from '@nestjs/common';
+import { Client } from 'src/user/service/client/client';
 
 @Controller('client')
 export class ClientController {
-    constructor(@Injectable("USER_SERVICE") private readonly clientService:C {
-        
-    })
+  constructor(@Inject('USER_SERVICE') private readonly clientService: Client) {}
+
+  @Get('')
+  getClient(){
+    return this.clientService.getAllClinet()
+  }
 }
