@@ -6,7 +6,7 @@ export class ClientController {
   constructor(@Inject('USER_SERVICE') private readonly clientService: Client) {}
 
   @Get('')
-  getClient(){
-    return this.clientService.getAllClinet()
+  getClient() {
+    return this.clientService.getAllClient();
   }
 }
